@@ -1,0 +1,407 @@
+{
+     "dce_professor_slide_iguales": {
+        "name": {"es":"DCE, Presentador y presentación iguales entre unos y otras", 
+                 "en":"DCE, Presenter and presentation equal and side by side"
+                 },
+        "icon": "professor_slide_icon.png",
+        "dceWidthType": "double",
+        "dceBufferSize": 12,
+        "masterVideo": {
+            "content": "presenter",
+            "rect": [{
+                    "aspectRatio": "4/3",
+                    "left": "158",
+                    "top": "121",
+                    "width": "638",
+                    "height": "478"
+                },
+                {
+                    "aspectRatio": "16/9",
+                    "left": "0",
+                    "top": "180",
+                    "width": "638",
+                    "height": "359"
+                }
+            ],
+            "visible": "true",
+            "layer": "1"
+        },
+        "slaveVideo": {
+            "content": "presentation",
+            "rect": [{
+                    "aspectRatio": "4/3",
+                    "left": "644",
+                    "top": "121",
+                    "width": "638",
+                    "height": "478"
+                },
+                {
+                    "aspectRatio": "16/9",
+                    "left": "644",
+                    "top": "180",
+                    "width": "638",
+                    "height": "359"
+                }
+            ],
+            "visible": "true",
+            "layer": "1"
+        },
+        "background": {
+            "content": "slide_professor_paella.jpg",
+            "zIndex": 5,
+            "rect": {
+                "left": "0",
+                "top": "0",
+                "width": "1280",
+                "height": "720"
+            },
+            "visible": "true",
+            "layer": "0"
+        },
+        "logos-#DCE-ignore-Paella-logos": [
+            {
+                "content": "paella_logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "10",
+                    "width": "49",
+                    "height": "42"
+                }
+            },
+            {
+                "content": "logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "70",
+                    "width": "125",
+                    "height": "42"
+                }
+            }
+        ]
+    },
+     "slide_over_professor": {
+        "name": {"es": "Presentación sobre profesor"},
+        "icon": "slide_over_professor_icon.png",
+        "dceWidthType": "single",
+        "dceBufferSize": 0,
+        "masterVideo": {
+            "content": "presenter",
+            "rect": [
+                {
+                    "aspectRatio": "16/9",
+                    "left": "0",
+                    "top": "0",
+                    "width": "1280",
+                    "height": "720"
+                },
+                {
+                    "aspectRatio": "4/3",
+                    "left": "160",
+                    "top": "0",
+                    "width": "960",
+                    "height": "720"
+                }
+            ],
+            "visible": "true",
+            "layer": "1"
+        },
+        "slaveVideo": {
+            "content": "presentation",
+            "rect": [{
+                "aspectRatio": "4/3",
+                "left": "50",
+                "top": "400",
+                "width": "350",
+                "height": "262"
+            },
+            {
+                "aspectRatio": "16/9",
+                "left": "50",
+                "top": "465",
+                "width": "350",
+                "height": "197"
+            }],
+            "visible": "true",
+            "layer": "1"
+        },
+        "background": {
+            "content": "default_background_paella.jpg",
+            "zIndex": 5,
+            "rect": {
+                "left": "0",
+                "top": "0",
+                "width": "1280",
+                "height": "720"
+            },
+            "visible": "true",
+            "layer": "0"
+        },
+        "logos-#DCE-ignore-Paella-logos": [
+            {
+                "content": "paella_logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "10",
+                    "width": "49",
+                    "height": "42"
+                }
+            },
+            {
+                "content": "logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "70",
+                    "width": "125",
+                    "height": "42"
+                }
+            }
+        ]
+    },
+    "slide_over_professor_right": {
+        "name": {"es": "Presentación a la derecha, sobre profesor"},
+        "icon": "slide_over_professor_right_icon.png",
+        "dceWidthType": "single",
+        "dceBufferSize": 0,
+        "masterVideo": {
+            "content": "presenter",
+            "rect": [
+                {
+                    "aspectRatio": "16/9",
+                    "left": "0",
+                    "top": "0",
+                    "width": "1280",
+                    "height": "720"
+                },
+                {
+                    "aspectRatio": "4/3",
+                    "left": "160",
+                    "top": "0",
+                    "width": "960",
+                    "height": "720"
+                }
+            ],
+            "visible": "true",
+            "layer": "1"
+        },
+        "slaveVideo": {
+            "content": "presentation",
+            "rect": [{
+                "aspectRatio": "4/3",
+                "left": "910",
+                "top": "400",
+                "width": "350",
+                "height": "262"
+            },
+            {
+                "aspectRatio": "16/9",
+                "left": "910",
+                "top": "465",
+                "width": "350",
+                "height": "197"
+            }],
+            "visible": "true",
+            "layer": "1"
+        },
+        "background": {
+            "content": "default_background_paella.jpg",
+            "zIndex": 5,
+            "rect": {
+                "left": "0",
+                "top": "0",
+                "width": "1280",
+                "height": "720"
+            },
+            "visible": "true",
+            "layer": "0"
+        },
+        "logos-#DCE-ignore-Paella-logos": [
+            {
+                "content": "paella_logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "10",
+                    "width": "49",
+                    "height": "42"
+                }
+            },
+            {
+                "content": "logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "70",
+                    "width": "125",
+                    "height": "42"
+                }
+            }
+        ]
+    },
+    "professor": {
+        "name": {"es": "Solo profesor"},
+        "icon": "professor_icon.png",
+        "dceWidthType": "single",
+        "dceBufferSize": 0,
+        "masterVideo": {
+            "content": "presenter",
+            "rect": [
+                {
+                    "aspectRatio": "16/9",
+                    "left": "0",
+                    "top": "0",
+                    "width": "1280",
+                    "height": "720"
+                },
+                {
+                    "aspectRatio": "4/3",
+                    "left": "160",
+                    "top": "0",
+                    "width": "960",
+                    "height": "720"
+                }
+            ],
+            "visible": "true",
+            "layer": "1"
+        },
+        "slaveVideo": {
+            "content": "presentation",
+            "rect": [{
+                "aspectRatio": "4/3",
+                "left": "0",
+                "top": "0",
+                "width": "0",
+                "height": "0",
+                "comment": "Collapse the slave video on presenter only view"
+            },
+            {
+                "aspectRatio": "16/9",
+                "left": "0",
+                "top": "0",
+                "width": "0",
+                "height": "0",
+                "comment": "Collapse the slave video on presenter only view"
+            }],
+            "visible": "false",
+            "layer": "1"
+        },
+        "background": {
+            "content": "default_background_paella.jpg",
+            "zIndex": 5,
+            "rect": {
+                "left": "0",
+                "top": "0",
+                "width": "1280",
+                "height": "720"
+            },
+            "visible": "true",
+            "layer": "0"
+        },
+        "logos-#DCE-ignore-Paella-logos": [
+            {
+                "content": "paella_logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "10",
+                    "width": "49",
+                    "height": "42"
+                }
+            },
+            {
+                "content": "logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "70",
+                    "width": "125",
+                    "height": "42"
+                }
+            }
+        ]
+    },
+     "slide": {
+        "name": {"es": "Solo presentación"},
+        "icon": "slide_icon.png",
+        "dceWidthType": "single",
+        "dceBufferSize": 0,
+        "masterVideo": {
+            "content": "presenter",
+            "rect": [{
+                "aspectRatio": "4/3",
+                "left": "0",
+                "top": "0",
+                "width": "0",
+                "height": "0",
+                "comment" :"Collapse presenter video on slide only view"
+            },
+            {
+                "aspectRatio": "16/9",
+                "left": "0",
+                "top": "0",
+                "width": "0",
+                "height": "0",
+                "comment" :"Collapse presenter video on slide only view"
+            }],
+            "visible": "false",
+            "layer": "1"
+        },
+        "slaveVideo": {
+            "content": "presentation",
+            "rect": [
+                {
+                    "aspectRatio": "16/9",
+                    "left": "0",
+                    "top": "0",
+                    "width": "1280",
+                    "height": "720"
+                },
+                {
+                    "aspectRatio": "4/3",
+                    "left": "160",
+                    "top": "0",
+                    "width": "960",
+                    "height": "720"
+                }],
+            "visible": "true",
+            "layer": "1"
+        },
+        "background": {
+            "content": "default_background_paella.jpg",
+            "zIndex": 5,
+            "rect": {
+                "left": "0",
+                "top": "0",
+                "width": "1280",
+                "height": "720"
+            },
+            "visible": "true",
+            "layer": "0"
+        },
+        "logos-#DCE-ignore-Paella-logos": [
+            {
+                "content": "paella_logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "10",
+                    "width": "49",
+                    "height": "42"
+                }
+            },
+            {
+                "content": "logo.png",
+                "zIndex": 5,
+                "rect": {
+                    "top": "10",
+                    "left": "70",
+                    "width": "125",
+                    "height": "42"
+                }
+            }
+        ]
+    }
+}
