@@ -346,6 +346,15 @@ Class ("base.UserAgent",{
 			this.browser.Version.versionString = RegExp.$1;
 		}
 
+		this.browser.Edge = /Edge\/(.*)/.test(userAgentString);
+		if (this.browser.Edge) {
+			var result = /Edge\/(.*)/.exec(userAgentString);
+			this.browser.Name = "Edge";
+			this.browser.Chrome = false;
+			this.browser.Vendor = "Microsoft";
+			this.browser.Version.versionString = result[1];
+		} 
+
 		this.browser.Explorer = /MSIE ([\d\.]+)/.test(userAgentString);
 		if (!this.browser.Explorer) {
 			var re = /\Mozilla\/5.0 \(([^)]+)\) like Gecko/
@@ -716,6 +725,8 @@ base.parameters = {
 	parse:function() {
 		if (!this.list) {
 			var url = window.location.href;
+			this.list = {};
+			
 			if (/https?:\/\/([a-z0-9.\-_\/\~:]*\?)([a-z0-9.\/\-_\%\=\&]*)\#*/i.test(url)) {
 				var params = RegExp.$2;
 				var paramArray = params.split('&');
@@ -726,9 +737,6 @@ base.parameters = {
 					var value = keyValue.length==2 ? keyValue[1]:'';
 					this.list[key] = value;
 				}
-			}
-			else {
-				this.list = [];
 			}
 		}
 	},
@@ -1306,4 +1314,21 @@ base.types = {
 
 base.uuid = function() {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
+}
+
+base.imgBase64 = function(url) {
+	var img = new Image();
+	img.onload = function(event) {
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext('2d');
+		canvas.width = event.srcElement.width;
+		canvas.height = event.srcElement.height;
+		ctx.drawImage(event.srcElement,0,0);
+		var dataUrl = canvas.toDataURL('image/png');
+		event.srcElement.onload = null;
+		event.srcElement.src = dataUrl;
+		canvas = null;
+	};
+	img.src = url;
+	return img;
 }

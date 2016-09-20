@@ -13,9 +13,9 @@
 
 .buttonPlugin.showMultipleQualitiesPlugin {
 	text-align: center;
-	line-height: 40px;
 	background-position: -600% -100%;
-	font-size: 12px;
+	font-size: 0.8em;
+	line-height: @playbackBarButtonHeight;
 }
 
 .buttonPluginPopUp.showMultipleQualitiesPlugin {
@@ -24,4 +24,23 @@
 
 .selectQuality {
 	padding: 10px;
+}
+
+.multipleQualityItem {
+	font-size: 19px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	cursor: pointer;	
+}
+
+.multipleQualityItem:hover {
+	background-color: @hoverBackgroundColor;
+}
+
+.multipleQualityItem.selected {
+	color:@mainColor;
+}
+
+.multipleQualityItem.selected:hover {
+	color:@popup_text_color;
 }

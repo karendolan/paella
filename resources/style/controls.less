@@ -2,17 +2,23 @@
 
 @playbackBarButtonWidth: unit(@playbackBarButtonWidthPx, px);
 
-@playbackControlHeight: unit(@playbackControlHeightPx,px);
+@playbackControlHeight: unit(@playbackControlHeightPx + 2,px);
+
+@playbackControlFullHeight: unit(@playbackControlHeightPx, px);
 
 @playbackBarHeightPx: (@playbackBarButtonHeightPx + @playbackControlHeightPx + 2);
 
-@playbackBarHeight: unit(@playbackBarHeightPx,px);
+@playbackBarHeight: unit(@playbackBarHeightPx + 2,px);
+
+@playbackControlOuterHeight: unit(@playbackControlHeightPx + 2, px);
 
 body {
 	height: 100%;
+	width: 100%;
 	font-family: @fontFamily;
 	font-size: 12px;
 }
+
 
 h2 {
 }
@@ -48,11 +54,15 @@ div {
 	user-select: none;
 }
 
-#playerContainer:-webkit-full-screen	{ width: 100%; }
-#playerContainer:-moz-full-screen		{ width: 100%; }
-#playerContainer:-ms-full-screen		{ width: 100%; }
-#playerContainer:-o-full-screen			{ width: 100%; }
-#playerContainer:full-screen			{ width: 100%; }
+#playerContainer { 
+	background-color: white; 
+}
+
+#playerContainer:-webkit-full-screen	{ width: 100%; height: 100%; background-color: white; }
+#playerContainer:-moz-full-screen		{ width: 100%; height: 100%; background-color: white; }
+#playerContainer:-ms-full-screen		{ width: 100%; height: 100%; background-color: white; }
+#playerContainer:-o-full-screen			{ width: 100%; height: 100%; background-color: white; }
+#playerContainer:full-screen			{ width: 100%; height: 100%; background-color: white; }
 
 #ignoreBrowserCheckLink {
 	color:black;
@@ -83,6 +93,8 @@ div {
 	left:0px;
 	right:0px;
 	height:@playbackBarButtonHeight;
+	font-size:@playbackBarFontSize;
+	overflow: hidden;
 }
 
 .playbackBar {
@@ -102,7 +114,7 @@ div {
 }
 
 .playbackBarFull {
-	height: @playbackControlHeight;
+	height: @playbackControlFullHeight;
 	background-color: @mainColor;
 }
 
@@ -113,8 +125,8 @@ div {
 	background-image: @paella_icons_image;
 	background-size: @paella_icons_bkg_size;
 	background-position: 0px 0px;
-	margin-left:2px;
-	margin-right: 2px;
+	margin-left: 0px;
+	margin-right: 0px;
 	color: @icon_text_color;
 }
 
@@ -143,14 +155,14 @@ div {
 .popUpPluginContainer {
 	position: absolute;
 	right: 0px;
-	z-index: 1;
+	z-index: 110;
 	color: @popup_text_color;
 }
 
 .buttonPluginPopUp {
 	background-color: @backgroundColor;
 	position: absolute;
-	bottom: 0px;
+	bottom: -@playbackControlOuterHeight;
 }
 
 .timelinePluginContainer {
@@ -192,15 +204,15 @@ div {
 	display: block;
 	position: relative;
 	width: 69px;
-	height: @playbackControlHeight;
+	height: @playbackControlFullHeight;
 	font-size: 10px;
 	background-repeat: no-repeat;
 	padding-left: 5px;
 	font-family: verdana;
 	text-align: left;
 	z-index: 100;
-	line-height: @playbackControlHeight;
-	margin-top: -@playbackControlHeight;
+	line-height: @playbackControlFullHeight;
+	margin-top: -@playbackControlFullHeight;
 	cursor:pointer;
 }
 
@@ -348,4 +360,28 @@ div {
     width: 100%;
     max-width: none;
     border: 1px solid @backgroundColor;
+}
+
+.videoPosterFrameImage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+.playerContainer_controls_playback_playbackBar_canvas{
+  	overflow: hidden;
+  	position: absolute;
+}
+
+#playerContainer_controls_playback_playbackBar {
+  overflow: hidden;
+}
+
+.login-link {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

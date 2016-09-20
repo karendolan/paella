@@ -1,3 +1,21 @@
+/*
+ Paella HTML 5 Multistream Player
+ Copyright (C) 2013  Universitat Politècnica de València
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 
 // Paella Mouse Manager
 ///////////////////////////////////////////////////////
@@ -60,6 +78,27 @@ Class ("paella.MouseManager", {
 paella.utils = {	
 	mouseManager: new paella.MouseManager(),
 	
+	folders: {
+		get: function(folder) {
+			if (paella.player && paella.player.config && paella.player.config.folders && paella.player.config.folders[folder]) {
+				return paella.player.config.folders[folder];	
+			}
+			return undefined;			
+		},
+		
+		profiles: function() {
+			return paella.utils.folders.get("profiles") || "config/profiles";			
+		},
+		
+		resources: function() {
+			return paella.utils.folders.get("resources") || "resources";			
+		},
+		
+		skins: function() {
+			return paella.utils.folders.get("skins") || paella.utils.folders.get("resources") + "/style";			
+		}
+	},
+	
 	styleSheet: {
 		removeById:function(id) {
 			var outStyleSheet = $(document.head).find('#' + id)[0];
@@ -99,11 +138,38 @@ paella.utils = {
 		set:function(skinName) {
 			var skinId = 'paellaSkin';
 			paella.utils.styleSheet.removeById(skinId);
-			paella.utils.styleSheet.add('resources/style/style_' + skinName + '.css');
+			paella.utils.styleSheet.add(paella.utils.folders.skins() + '/style_' + skinName + '.css');
+			base.cookies.set("skin",skinName);
+		},
+		
+		restore:function(defaultSkin) {
+			var storedSkin = base.cookies.get("skin");
+			if (storedSkin && storedSkin!="") {
+				this.set(storedSkin);
+			}
+			else {
+				this.set(defaultSkin);
+			}
 		}
 	},
 
 	timeParse:{
+		timeToSeconds:function(timeString) {
+			var hours = 0;
+			var minutes = 0;
+			var seconds =0;
+			if (/([0-9]+)h/i.test(timeString)) {
+				hours = parseInt(RegExp.$1) * 60 * 60;
+			}
+			if (/([0-9]+)m/i.test(timeString)) {
+				minutes = parseInt(RegExp.$1) * 60;
+			}
+			if (/([0-9]+)s/i.test(timeString)) {
+				seconds = parseInt(RegExp.$1);
+			}
+			return hours + minutes + seconds;
+		},
+	
 		secondsToTime:function(seconds) {
 			var hrs = ~~ (seconds / 3600);
 			if (hrs<10) hrs = '0' + hrs;

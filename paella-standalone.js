@@ -98,7 +98,7 @@ paella.standalone.StandAloneVideoLoader = Class.create(paella.VideoLoader, {
 		}
 		else {
 			try {
-				return paella.player.config.standalone.reposiroty;
+				return paella.player.config.standalone.repository;
 			}
 			catch(e) {
 				return "";
@@ -280,6 +280,22 @@ paella.standalone.StandAloneVideoLoader = Class.create(paella.VideoLoader, {
 
 		// Callback
 		this.loadStatus = true;
+		
+				
+		// Load Captions
+		var captions = paella.standalone.episode.mediapackage.captions;
+		if (captions) {
+			for (var i=0; i<captions.length; ++i) {
+				var url = captions[i].url;
+				
+				if (! /^[a-zA-Z]+:\/\//.test(url)) {
+					url = this.getRepository() + "/" + paella.initDelegate.getId() + "/" + url;
+				}			
+				var c = new paella.captions.Caption(i, captions[i].format, url, {code: captions[i].lang, txt: captions[i].text});
+				paella.captions.addCaptions(c);
+			}
+		}
+		
 		onSuccess();
 	}
 });
@@ -413,7 +429,7 @@ paella.dataDelegates.StandaloneCaptionsDataDelegate = Class.create(paella.DataDe
 				if (selectedCaption){
 					var url = selectedCaption.url;
 					if (! /^[a-zA-Z]+:\/\//.test(url)) {
-						url = paella.player.config.standalone.reposiroty + "/" + params.id + "/" + url;
+						url = paella.player.config.standalone.repository + "/" + params.id + "/" + url;
 					}
 					
 					if (onSuccess) { onSuccess({error: false, url: url, format: selectedCaption.format}, true); }	        
