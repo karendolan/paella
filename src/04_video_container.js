@@ -240,7 +240,8 @@ class VideoContainerBase extends paella.DomNode {
 		this._seekType = paella.SeekType.FULL;
 		this._seekTimeLimit = 0;
 		this._attenuationEnabled = false;
-		
+		this._maxSyncDelay = 0.5;
+
 		$(this.domElement).click((evt) => {
 			if (this.firstClick && base.userAgent.browser.IsMobileVersion) return;
 			if (this.firstClick && !this._playOnClickEnabled) return;
@@ -323,6 +324,18 @@ class VideoContainerBase extends paella.DomNode {
 
 	get seekType() { return this._seekType; }
 
+	syncVideos(currentTime) {
+		let streams = paella.player.videoContainer.streamProvider.videoPlayers;
+		streams.forEach(v => {
+			let diff = Math.abs(v.video.currentTime - currentTime);
+			if (v !== paella.player.videoContainer.streamProvider.mainAudioPlayer
+					&& !v.video.paused && diff > this._maxSyncDelay) {
+				base.log.debug(`Sync video=${v.video.id} performed, diff=${diff}`);
+				v.video.currentTime = currentTime; // bypassing promises to prevent delay
+			}
+		});
+	}
+
 	triggerTimeupdate() {
 		var paused = 0;
 		var duration = 0;
@@ -339,6 +352,7 @@ class VideoContainerBase extends paella.DomNode {
 
 			.then((currentTime) => {
 				if (!paused || this._force) {
+					this.syncVideos(currentTime);
 					this._seekTimeLimit = currentTime>this._seekTimeLimit ? currentTime:this._seekTimeLimit;
 					this._force = false;
 					paella.events.trigger(paella.events.timeupdate, {
